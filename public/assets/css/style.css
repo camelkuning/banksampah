@@ -1,0 +1,403 @@
+.btn-style{
+    padding: 4px;
+    width: 15%;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000;
+}
+.btn-style:hover{
+    background-color: #868686;
+}
+
+.btn-green{
+    /* Di Bawah Ini Bg */
+    background-color: #86A789;
+    /* Di Bawah ini Warna Text */
+    color: #000;
+}
+
+.btn-green:hover{
+    background-color: #D2E3C8;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #D2E3C8;
+
+}
+
+header{
+    background-image: linear-gradient(#ffffff9b, #000000),url("/bgsave.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container{
+    width: 80%;
+    margin-inline: auto;
+}
+
+.navbar{
+    padding: 20px 0 20px 0;
+    position :fixed;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.navbar .scrolling-active{
+    background-color: #D2E3C8;
+    padding: 30px 0 30px 0;
+}
+
+.navbar .box-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .box-navbar .logo h1{
+    color: white;
+    font-size: 24px;
+}
+
+.navbar .box-navbar .menu{
+    display: flex;
+    column-gap: 20px;
+}
+
+.navbar .box-navbar .menu li{
+    list-style-type: none;
+}
+
+.navbar .box-navbar .menu li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px 10px 15px;
+
+}
+
+.navbar .box-navbar .menu .active a {
+    background-color: #D2E3C8;
+}
+
+.navbar .box-navbar .menu li a:hover{
+    background-color: #D2E3C8;
+    transition: all 0.3s ease;
+    padding: 8px;
+    width: 15%;
+    border: none;
+    border-radius: 10px;
+
+    color: #000;
+}
+
+.menu-bar{
+    color: white;
+    font-size: 24px;
+    display: none;
+}
+
+.hero{  
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.hero .box-hero{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    column-gap: 50px;
+    justify-content: space-between;
+
+}
+
+.hero .box-hero .box:nth-child(1) h1 {
+    color: white;
+    font-size: 3vw;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+/*untuk tombol di landing page*/
+.hero .box-hero .box.box:nth-child(1) button {
+    width: 180px;
+    height: 50px;
+    background-color: #EBF3E8;
+    font-weight: bold;
+    color: rgb(2, 2, 2);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.hero .box-hero .box:nth-child(1) button:hover {
+    background-color: #86A789;
+    transition: all 0.8s ease;
+    padding: 10px;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.hero .box-hero .box:nth-child(1) p{
+    line-height: 2;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 100;
+}
+
+.hero .box-hero .box:nth-child(2) img {
+    width: 100%;
+}
+
+.services {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0 50px 0;
+}
+
+.services .box-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 50px;
+}
+
+.services .box-services .box p {
+    font-weight: 100;
+}
+
+.sampah {
+    padding: 20px 0 20px 0;
+}
+
+.sampah .box-sampah {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    row-gap: 50px;
+}
+
+.sampah .box-sampah .box {
+    text-align: center;
+    color: white;
+}
+
+.sampah .box-sampah .box img{
+    width: 100%;
+    height: 200px;
+}
+.sampah .box-sampah .box p{
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+
+.sampah .box-sampah .box button {
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: #0050b3;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.sampah .box-sampah .box button:hover {
+    background-color: #0050b3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.services .box-services .box {
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+.services .box-services .box i{
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #0050b3;
+}
+
+@media screen and (max-width: 1200px) {
+    .hero .box-hero .box:nth-child(1) button {
+    width : 150px;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .menu-bar {
+        display: block;
+    }
+.navbar .box-navbar .menu{
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    top: 70px;
+    right: 50%;
+    transform: translateX(50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    background-color: #0050b3;
+}
+
+.navbar .box-navbar .menu .menu-active{
+    top: 80px;
+    opacity: 1;
+    border-top: 1px solid white;
+}
+
+.hero .box-hero .box.box:nth-child(1) p {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .hero .box-hero{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        row-gap: 10px;
+    }
+    
+}
+
+.hero .box-hero .box.box:nth-child(1) {
+    order: 2;
+    text-align: center;
+}
+
+.hero .box-hero .box:nth-child(2) {
+    order: 1;
+    text-align: center;
+}
+
+.hero .box-hero .box.box:nth-child(2) img {
+    width: 55vw;
+}
+
+@media screen and (max-width: 575px) {
+    .hero .box-hero .box.box:nth-child(1) h1 {
+        font-size: 18px;
+    }
+    
+}
+
+@media screen and (max-width: 370px) {
+    .hero .box-hero {
+        row-gap: 0;
+    }
+    
+}
+
+.hero .box-hero .box.box:nth-child(2) {
+    width: 55vw;
+    align-self: flex-end;
+    justify-self:center ;
+}
+
+/* Add your styles here */
+body {
+    font-family: Arial, sans-serif;
+    
+  }
+  .dropdown {
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .show {
+    display: block;
+  }
+
+/*Bagian Login*/
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px;
+}
+
+.login-container {
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    background-color: #4caf50;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    
+}
