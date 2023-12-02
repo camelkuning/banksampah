@@ -72,7 +72,7 @@ class AuthController extends Controller
     {
         return view('clients.login', [
             config(['app.title' => "Login"]),
-        ]);
+        ])->with('flash_success', 'Hallo');
     }
 
     /**
@@ -88,7 +88,7 @@ class AuthController extends Controller
 
         if (!Auth::attempt($validator)) {
             return back()->withErrors([
-                'message' => 'The username and password you entered did not match. Please check the spelling and try again.',
+                'message' => 'Username dan Password Yang Dimasukan Salah',
             ])->onlyInput('username');
         }
 

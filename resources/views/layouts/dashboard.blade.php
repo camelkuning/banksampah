@@ -25,6 +25,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Bootstreap -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 
@@ -36,14 +37,15 @@
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown">
                         <i class="bi bi-person-circle"></i> {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/pengguna/profile">
                             <i class="bi bi-person-circle mr-3"></i>Profile
                         </a>
-                        <a class="dropdown-item" href="/pengguna/logout">
+                        <a class="dropdown-item" href="/login">
                             <i class="bi bi-box-arrow-right mr-3"></i>Logout
                         </a>
                     </div>
