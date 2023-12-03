@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\Response

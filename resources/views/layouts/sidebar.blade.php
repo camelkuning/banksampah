@@ -28,7 +28,7 @@
         <div class="sidebar bg-dark">
             <ul class="list-unstyled mt-4">
                 <li class="mb-3">
-                    <a href="/pengguna" class="nav-link" aria-current="page">
+                    <a href="/dashboard" class="nav-link" aria-current="page">
                         <i class="bi bi-house-door-fill mr-3"></i>
                         Home
                     </a>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="mb-3">
                     <a href="{{ route('pengguna.transaksi') }}" class="nav-link link-body-emphasis ">
-                        <i class="bi bi-trash3-fill mr-3"></i>
+                        <i class="bi bi-cash mr-3"></i>
                         Transaksi
                     </a>
                 </li>

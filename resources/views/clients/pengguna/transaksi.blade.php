@@ -7,7 +7,7 @@
                 <h5 class="card-title" style="margin-bottom: 50px;">Transaksi Sampah</h5>
                 <div class="card">
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -25,7 +25,7 @@
                                         <td> {{ $data->berat_sampah }} </td>
                                         <td> {{ $data->jenis_sampah }} </td>
                                         <td> {{ $data->lokasi_pembuangan }} </td>
-                                        <td> {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h-m-s') }}
+                                        <td> {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h:m:s') }}
                                         </td>
                                         @if ($data->status == 'belum')
                                             <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
