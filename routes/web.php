@@ -53,6 +53,9 @@ Route::group([
                 Route::post('buangsampah', 'postbuangsampah')->name('postBuangSampah');
 
                 Route::get('transaksi', 'transaksi')->name('transaksi');
+
+                //tes
+
             });
         });
 
@@ -67,7 +70,7 @@ Route::group([
 
                 Route::get('penerimaan', 'penerimaan')->name('penerimaan');
                 Route::post('penerimaan', 'penerimaan')->name('penerimaan');
-                
+
             });
         });
 
