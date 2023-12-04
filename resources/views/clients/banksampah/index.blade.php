@@ -4,37 +4,47 @@
 <div class="content p-4 w-75">
 
 
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card bg-primary text-light">
-                <div class="card-header">
-                    Hallo
-                </div>
-                <div class="card-body">
-                    Halloooaoaoa
-                </div>
-            </div>
+    <style type="text/css">
+        body{
+            font-family: roboto;
+        }
+
+        table{
+            margin: 0px auto;
+        }
+        </style>
+
+
+        <center>
+            <h2>Grafik Pembuangan Sampah<br/>SIBASAM</h2>
+        </center>
+
+
+
+        <div style="width: 800px;margin: 0px auto;">
+            <canvas id="myChart"></canvas>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card bg-primary text-light">
-                <div class="card-header">
-                    Hallo
-                </div>
-                <div class="card-body">
-                    :v
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card bg-primary text-light">
-                <div class="card-header">
-                    Hallo
-                </div>
-                <div class="card-body">
-                    Halloooaoaoa
-                </div>
-            </div>
-        </div>
+
+        <br/>
+        <br/>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Jenis Sampah</th>
+                    <th>Lokasi Pembuangan</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+
+        <script>
+
+        </script>
 
     </div>
 </div>
