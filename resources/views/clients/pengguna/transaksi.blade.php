@@ -16,22 +16,27 @@
                                     <th scope="col">Lokasi Pembuangan</th>
                                     <th scope="col">Hari/Tanggal | Jam</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($datas as $data)
-                                    <tr>
+                                    <tr href="/httsdgsdg">
                                         <td> {{ $data->id }} </td>
                                         <td> {{ $data->berat_sampah }} </td>
                                         <td> {{ $data->jenis_sampah }} </td>
                                         <td> {{ $data->lokasi_pembuangan }} </td>
-                                        <td> {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h:m:s') }}
+                                        <td>
+                                            {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h:m:s') }}
                                         </td>
                                         @if ($data->status == 'belum')
                                             <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
                                         @elseif ($data->status == 'sudah')
                                             <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>
                                         @endif
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ route('pengguna.transaksi.show', $data->id) }}" role="button">Link</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

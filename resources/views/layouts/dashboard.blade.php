@@ -6,6 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css') }}/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css') }}/fontawesome.min.css">
@@ -25,8 +26,9 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Bootstreap -->
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    @stack('css')
 </head>
 
 <body>
@@ -37,8 +39,7 @@
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
                         <i class="bi bi-person-circle"></i> {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -64,6 +65,7 @@
     <script src="{{ asset('assets/js') }}/popper.min.js"></script>
     <script src="{{ asset('assets/js') }}/bootstrap.min.js"></script>
     <script src="{{ asset('assets/js') }}/bsadmin.js"></script>
+    @stack('js')
 </body>
 
 </html>

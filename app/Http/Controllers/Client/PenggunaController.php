@@ -67,4 +67,22 @@ class PenggunaController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        $data = PenggunaBankSampah::with('transaksi')->where('id', $request->id)->firstOrFail();
+
+
+        if ($data->UserID !== Auth::user()->id) {
+            return redirect()->route('dashboard');
+        }
+
+        return view('clients.pengguna.show', [
+            config(['app.title' => "Transaksi"]),
+            'data' => $data,
+        ]);
+    }
 }

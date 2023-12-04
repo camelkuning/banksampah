@@ -27,4 +27,13 @@ class PenggunaBankSampah extends Model
         'jam',
         'status',
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function transaksi()
+    {
+        // return $this->hasOne(PenggunaTransaksi::class, 'id', 'bank_id');
+        return $this->hasOne(PenggunaTransaksi::class, 'bank_id', 'id');
+    }
 }

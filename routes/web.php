@@ -53,7 +53,7 @@ Route::group([
                 Route::post('buangsampah', 'postbuangsampah')->name('postBuangSampah');
 
                 Route::get('transaksi', 'transaksi')->name('transaksi');
-
+                Route::get('transaksi/{id}', 'show')->name('transaksi.show');
                 //tes
 
             });
@@ -66,10 +66,10 @@ Route::group([
         ], function () {
             Route::controller(BankSampahController::class)->group(function () {
                 Route::get('petugas', 'petugas')->name('petugas');
-                Route::post('petugas', 'petugas')->name('postPetugas');
+                Route::post('petugas', 'petugas');
 
                 Route::get('penerimaan', 'penerimaan')->name('penerimaan');
-                Route::post('penerimaan', 'penerimaan')->name('penerimaan');
+                Route::post('penerimaan', 'penerimaan');
 
             });
         });
