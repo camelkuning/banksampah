@@ -50,9 +50,7 @@ class PenggunaController extends Controller
             'jam'               => $request->jam,
         ]);
 
-        return back()->withInput([
-            'BeratSampah',
-        ]);
+        return redirect()->route('pengguna.transaksi.show', ['id' => $data->id]);
     }
 
     /**

@@ -43,6 +43,8 @@ class PayController extends Controller
             ]
         ]);
 
+        dd($data);
+
         return response()->json($order);
     }
 
@@ -82,6 +84,8 @@ class PayController extends Controller
             DB::rollBack();
             dd($e);
         }
+
+        return back()->with('status', 'Berhasil membayar!');
     }
 
     /**

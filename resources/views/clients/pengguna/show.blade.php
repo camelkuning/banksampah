@@ -51,17 +51,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ $message }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
-
-                    @if ($message = Session::get('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>{{ $message }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
                     </div>
                     @endif
                     <form>
@@ -106,15 +98,12 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    @if ($data->status == "belum")
-                    <div id="paypal-button-container"></div>
-                    @else
-                    <a class="btn btn-primary" href="{{ route('pay.invoice', $data->transaksi->payment_gateway_id) }}" role="button">Link</a>
-                    @endif
-                </div>
-            </div>
+            @if ($data->status == "belum")
+            <div id="paypal-button-container"></div>
+            @else
+            <a class="btn btn-primary" href="{{ route('pay.invoice', $data->transaksi->payment_gateway_id) }}"
+                role="button">Link</a>
+            @endif
         </div>
     </div>
 </div>
