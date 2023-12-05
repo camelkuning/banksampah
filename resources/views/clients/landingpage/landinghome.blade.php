@@ -11,14 +11,14 @@
         crossorigin="anonymous">
     <style>
         body {
-            background-image: url('https://api.duniagames.co.id/api/content/upload/file/3926606741658920164.jpg');
+            background-image: url('bgsave.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            color: #fff;
+            color: #0b0b0b;
         }
 
         .navbar {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(7, 7, 7, 0.777);
         }
     </style>
 </head>
