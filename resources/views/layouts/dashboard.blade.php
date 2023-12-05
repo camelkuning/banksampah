@@ -32,7 +32,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand navbar-dark bg-primary">
         <a class="sidebar-toggle text-light mr-3"><i class="fa fa-bars"></i></a>
         <a class="navbar-brand" href="#"><i class="fa fa-code-branch"></i> SIBASAM</a>
@@ -46,7 +45,7 @@
                         <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <i class="bi bi-person-circle mr-3"></i>Profile
                         </a>
-                        <a class="dropdown-item" href="/login">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bi bi-box-arrow-right mr-3"></i>Logout
                         </a>
                     </div>
@@ -65,6 +64,7 @@
     <script src="{{ asset('assets/js') }}/popper.min.js"></script>
     <script src="{{ asset('assets/js') }}/bootstrap.min.js"></script>
     <script src="{{ asset('assets/js') }}/bsadmin.js"></script>
+
     @stack('js')
 </body>
 

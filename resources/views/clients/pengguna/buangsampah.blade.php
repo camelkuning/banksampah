@@ -26,8 +26,7 @@
                             <div class="mb-3" id="JenisSampah">
                                 <label for="JenisSampah">Jenis Sampah</label>
                                 <select class="form-select" name="JenisSampah" id="JenisSampah">
-                                    <option disable selected="selected">Pilih Jenis Sampah Anda :</option>
-                                    <option value="Organik">Sampah (Organik)</option>
+                                    <option disable value="Organik" selected="selected">Sampah (Organik)</option>
                                     <option value="Anorganik">Sampah (Anorganik)</option>
                                 </select>
                             </div>

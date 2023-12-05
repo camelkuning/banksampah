@@ -26,6 +26,7 @@ class PenggunaBankSampah extends Model
         'lokasi_pembuangan',
         'jam',
         'status',
+        'status_terima',
     ];
 
     /**
@@ -35,5 +36,13 @@ class PenggunaBankSampah extends Model
     {
         // return $this->hasOne(PenggunaTransaksi::class, 'id', 'bank_id');
         return $this->hasOne(PenggunaTransaksi::class, 'bank_id', 'id');
+    }
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function User()
+    {
+        return $this->hasOne(User::class, 'id', 'UserID');
     }
 }

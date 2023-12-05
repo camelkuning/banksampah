@@ -20,6 +20,12 @@
                         Penerimaan
                     </a>
                 </li>
+                <li class="mb-3">
+                    <a href="{{ route('banksampah.histori') }}" class="nav-link link-body-emphasis">
+                        <i class="bi bi-cart-plus-fill mr-3"></i>
+                        Histori
+                    </a>
+                </li>
             </ul>
         </div>
     @break

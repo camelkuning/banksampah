@@ -6,6 +6,11 @@
         <div class="col-md-12">
             <h5 class="card-title" style="margin-bottom: 50px;">Transaksi Sampah</h5>
             <div class="card">
+                @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -21,6 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach ($datas as $data)
                             <tr href="/httsdgsdg">
                                 <td> {{ $data->id }} </td>
@@ -31,29 +37,22 @@
                                     {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h:m:s') }}
                                 </td>
 
-                                @if ($data->status_terima == 0)
-                                <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
-                                @else
-                                <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>
-                                @endif
-
                                 @if ($data->status == 'belum')
                                 <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
                                 @elseif ($data->status == 'sudah')
                                 <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>
                                 @endif
 
-                                <td>
-                                    <a class="btn btn-primary" href="{{ route('banksampah.penerimaan.show', $data->id) }}"
-                                        role="button">ambil</a>
-                                </td>
-
+                                @if ($data->status_terima == 0)
+                                <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
+                                @else
+                                <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
 
-                    {{ $datas->links() }}
                 </div>
             </div>
         </div>

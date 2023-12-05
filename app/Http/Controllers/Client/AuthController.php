@@ -92,7 +92,9 @@ class AuthController extends Controller
             ])->onlyInput('username');
         }
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with([
+            'success' => 'Anda berhasil masuk',
+        ]);
     }
 
     /**

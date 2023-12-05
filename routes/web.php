@@ -34,7 +34,7 @@ Route::group([
         Route::get('login', 'login')->name('login');
         Route::post('login', 'postLogin');
 
-        Route::any('logout', 'destroy');
+        Route::any('logout', 'destroy')->name('logout');
     });
 
     Route::group([
@@ -86,8 +86,10 @@ Route::group([
                 Route::post('petugas', 'petugas');
 
                 Route::get('penerimaan', 'penerimaan')->name('penerimaan');
-                Route::post('penerimaan', 'penerimaan');
+                Route::get('penerimaan/{id}', 'show')->name('penerimaan.show');
+                Route::post('penerimaan', 'add')->name('penerimaan.add');
 
+                Route::get('histori', 'histori')->name('histori');
             });
         });
 
