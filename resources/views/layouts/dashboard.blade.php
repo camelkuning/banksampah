@@ -43,7 +43,7 @@
                         <i class="bi bi-person-circle"></i> {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/pengguna/profile">
+                        <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <i class="bi bi-person-circle mr-3"></i>Profile
                         </a>
                         <a class="dropdown-item" href="/login">

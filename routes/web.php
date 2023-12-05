@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\MainController;
 use App\Http\Controllers\Client\PenggunaController;
 use App\Http\Controllers\BankSampahController;
+use App\Http\Controllers\Client\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,22 @@ Route::group([
         Route::post('login', 'postLogin');
 
         Route::any('logout', 'destroy');
+    });
+
+    Route::group([
+        'prefix'     => '/profile',
+        'as'         => 'profile.',
+        'middleware' => ['auth']
+    ], function () {
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/update-username', 'update_username')->name('update.username');
+            Route::post('/update-email', 'update_email')->name('update.email');
+            Route::post('/update-password', 'update_password')->name('update.password');
+            Route::post('/update-alamat', 'update_alamat')->name('update.alamat');
+
+            Route::post('/update', 'update')->name('update');
+        });
     });
 
     Route::group([

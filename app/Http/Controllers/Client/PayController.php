@@ -43,8 +43,6 @@ class PayController extends Controller
             ]
         ]);
 
-        dd($data);
-
         return response()->json($order);
     }
 

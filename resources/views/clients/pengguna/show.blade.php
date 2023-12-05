@@ -2,11 +2,15 @@
 
 @push('js')
 <script
-    src="https://www.paypal.com/sdk/js?client-id=Af-vtJZYBT7qM7loVdbLsDNSvAtQmnkSr0FcgzXAkBAMbkMPNnxvBhHP-2yUrWAhE6rBGTCEG3eHOir2&currency=USD">
+    src="https://www.paypal.com/sdk/js?client-id=Af-vtJZYBT7qM7loVdbLsDNSvAtQmnkSr0FcgzXAkBAMbkMPNnxvBhHP-2yUrWAhE6rBGTCEG3eHOir2&currency=USD&components=buttons&enable-funding=paylater&disable-funding=venmo,card">
 </script>
 <script>
     paypal.Buttons({
-         createOrder: function(data, actions) {
+        style: {
+            shape: "rect",
+            layout: "vertical",
+        },
+        createOrder: function(data, actions) {
             return fetch('{{ route("pay.create") }}', {
                 method: 'POST',
                 body:JSON.stringify({
