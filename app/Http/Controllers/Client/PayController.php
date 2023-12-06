@@ -83,7 +83,21 @@ class PayController extends Controller
             dd($e);
         }
 
-        return back()->with('status', 'Berhasil membayar!');
+        // return back()->with([
+        //     'status', 'Berhasil membayar!'
+        // ]);
+
+        // return redirect()->route('pengguna.transaksi', [
+        //     'status' => 'Berhasil membayar!',
+        // ]);
+
+        // return redirect()->route('pengguna.transaksi')->with([
+        //     'status' => 'Berhasil membayar!',
+        // ]);
+
+        return redirect('/dashboard/pengguna/transaksi')->with([
+            'status' => 'Berhasil membayar!',
+        ]);
     }
 
     /**
@@ -106,23 +120,4 @@ class PayController extends Controller
         return $pdf->download('invoice.pdf');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function invoicep(Request $request)
-    {
-        $data = PenggunaTransaksi::where("payment_gateway_id", $request->id)->firstOrfail();
-        $bank = PenggunaBankSampah::where("id", $data->bank_id)->firstOrfail();
-
-        $data1 = [
-            "nama" => $data->vendor_payment_id,
-        ];
-
-        return view('pdf.invoice', [
-            config(['app.title' => "Register"]),
-            'data' => $data,
-            'bank' => $bank,
-        ]);
-    }
 }

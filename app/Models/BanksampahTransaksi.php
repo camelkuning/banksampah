@@ -29,8 +29,16 @@ class BanksampahTransaksi extends Model
     /**
      * Get the phone associated with the user.
      */
+    public function User()
+    {
+        return $this->hasOne(User::class, 'id', 'UserID');
+    }
+
+    /**
+     * Get the phone associated with the user.
+     */
     public function transaksi()
     {
-        return $this->hasMany(PenggunaBankSampah::class, 'id', 'transaksi_id');
+        return $this->hasOne(PenggunaBankSampah::class, 'id', 'transaksi_id');
     }
 }

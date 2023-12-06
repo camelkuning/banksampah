@@ -20,8 +20,8 @@
                                 <th scope="col">Jenis Sampah</th>
                                 <th scope="col">Lokasi Pembuangan</th>
                                 <th scope="col">Hari/Tanggal | Jam</th>
-                                <th scope="col">Status Terima</th>
                                 <th scope="col">Status Pembayaran</th>
+                                <th scope="col">Status Terima</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -29,21 +29,21 @@
 
                             @foreach ($datas as $data)
                             <tr href="/httsdgsdg">
-                                <td> {{ $data->id }} </td>
-                                <td> {{ $data->berat_sampah }} </td>
-                                <td> {{ $data->jenis_sampah }} </td>
-                                <td> {{ $data->lokasi_pembuangan }} </td>
+                                <td> {{ $data->transaksi->id }} </td>
+                                <td> {{ $data->transaksi->berat_sampah }} </td>
+                                <td> {{ $data->transaksi->jenis_sampah }} </td>
+                                <td> {{ $data->transaksi->lokasi_pembuangan }} </td>
                                 <td>
-                                    {{ Carbon\Carbon::parse($data->jam)->format('d/m/Y | h:m:s') }}
+                                    {{ Carbon\Carbon::parse($data->transaksi->jam)->format('d/m/Y | h:m:s') }}
                                 </td>
 
-                                @if ($data->status == 'belum')
+                                @if ($data->transaksi->status == 'belum')
                                 <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
-                                @elseif ($data->status == 'sudah')
+                                @elseif ($data->transaksi->status == 'sudah')
                                 <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>
                                 @endif
 
-                                @if ($data->status_terima == 0)
+                                @if ($data->transaksi->status_terima == 0)
                                 <td> <span class="badge rounded-pill bg-danger">Belum</span> </td>
                                 @else
                                 <td> <span class="badge rounded-pill bg-success">Sudah</span> </td>

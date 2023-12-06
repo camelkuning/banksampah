@@ -34,7 +34,6 @@ class PenggunaBankSampah extends Model
      */
     public function transaksi()
     {
-        // return $this->hasOne(PenggunaTransaksi::class, 'id', 'bank_id');
         return $this->hasOne(PenggunaTransaksi::class, 'bank_id', 'id');
     }
 

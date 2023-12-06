@@ -50,7 +50,9 @@ class PenggunaController extends Controller
             'jam'               => $request->jam,
         ]);
 
-        return redirect()->route('pengguna.transaksi.show', ['id' => $data->id]);
+        return redirect()->route('pengguna.transaksi.show', ['id' => $data->id])->with([
+            'status' => 'Order berhasil! Menunggu Petugas untuk menerima order.',
+        ]);
     }
 
     /**

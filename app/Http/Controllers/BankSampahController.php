@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BanksampahTransaksi;
 use App\Models\PenggunaBankSampah;
 use App\Models\PenggunaTransaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,13 +78,14 @@ class BankSampahController extends Controller
      */
     public function histori(Request $request)
     {
-        $yas = BanksampahTransaksi::with('transaksi')->where('UserID', Auth::user()->id)->get();
-        foreach ($characters as &$character) {
-        }
+        // $user = User::where('id', Auth::user()->id)->firstOrFail();
+        // $user->histori = BanksampahTransaksi::with('transaksi')->where('UserID', $user->id)->get();
+
+        $data = BanksampahTransaksi::with('transaksi')->where('UserID', Auth::user()->id)->get();
 
         return view('clients.banksampah.histori', [
             config(['app.title' => "Penerimaan"]),
-            'datas' => $yas->transaksi,
+            'datas' => $data,
         ]);
     }
 }

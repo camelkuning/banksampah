@@ -102,9 +102,9 @@
         </div>
 
         <div class="col-md-4">
-            @if ($data->status == "belum")
+            @if ($data->status_terima == "1" && $data->status == "belum")
             <div id="paypal-button-container"></div>
-            @else
+            @elseif ($data->status == "sudah")
             <a class="btn btn-primary" href="{{ route('pay.invoice', $data->transaksi->payment_gateway_id) }}"
                 role="button">Link</a>
             @endif
