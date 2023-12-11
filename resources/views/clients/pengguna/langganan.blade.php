@@ -13,7 +13,7 @@
                             <label for="langganan">Langganan</label>
                             <select class="form-control" name="langganan" id="langganan">
                                 @foreach ($datas as $data)
-                                <option value="{{ $data->id }}">{{ $data->name }} - Rp {{
+                                <option value="{{ $data->id }}">{{ $data->name }} - USD {{
                                     number_format($data->harga,2,',','.') }}</option>
                                 @endforeach
                             </select>
