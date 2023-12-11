@@ -19,7 +19,7 @@
 
                             <div class="mb-3" id="username">
                                 <label  for="BeratSampah">Berat Sampah (kg)</label>
-                                <input name="BeratSampah" type="text"
+                                <input name="BeratSampah" type="number"
                                     class="form-control @error('BeratSampah') is-invalid @enderror" placeholder="" required>
                             </div>
 

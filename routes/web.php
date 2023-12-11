@@ -73,8 +73,9 @@ Route::group([
                 Route::get('transaksi/{id}', 'show')->name('transaksi.show');
 
                 Route::get('langganan', 'langganan')->name('langganan');
-                Route::post('langganan', 'postLangganan')->name('langganan.post');
-                Route::get('langganan-success', 'langganan_success')->name('langganan.success');
+                Route::get('langganan/{id}', 'showLangganan')->name('langganan.show');
+                Route::post('langganan-create', 'langganan_create')->name('langganan.create');
+                Route::get('langganan-capture', 'langganan_capture')->name('langganan.capture');
             });
         });
 

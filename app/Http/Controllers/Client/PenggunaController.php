@@ -5,21 +5,26 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Langganan;
 use App\Models\PenggunaBankSampah;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Exception;
 
 class PenggunaController extends Controller
 {
     protected $provider;
+    protected $token;
 
     public function __construct()
     {
         $this->provider = new PayPalClient;
         $this->provider->setApiCredentials(config('paypal'));
+        $this->token = $this->provider->getAccessToken();
+        $this->provider->setAccessToken($this->token);
     }
 
     /**
@@ -51,6 +56,14 @@ class PenggunaController extends Controller
                 return back()->withErrors([
                     'message' => $message,
                 ])->onlyInput();
+            }
+        }
+
+        if ($request->BeratSampah > 5) {
+            if (Auth::user()->LanggananExpire->isPast()) {
+                return back()->withErrors([
+                    'error' => 'Tidak bisa buang sampah lebih dari 5kg. Berlangganan cepat!'
+                ]);
             }
         }
 
@@ -103,7 +116,11 @@ class PenggunaController extends Controller
      */
     public function langganan(Request $request)
     {
-        $data = Langganan::all();
+        if (Auth::user()->LanggananExpire->isPast()) {
+            $data = Langganan::all();
+        } else {
+            $data = Langganan::where('id', Auth::user()->LanggananType)->first();
+        }
 
         return view('clients.pengguna.langganan', [
             config(['app.title' => "Langganan"]),
@@ -115,10 +132,24 @@ class PenggunaController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postLangganan(Request $request)
+    public function showLangganan(Request $request)
+    {
+        $data = Langganan::where('id', $request->id)->first();
+
+        return view('clients.pengguna.langganan-show', [
+            config(['app.title' => "Langganan"]),
+            'data' => $data,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function langganan_create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'langganan' => 'required',
+            'langganan_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -134,40 +165,20 @@ class PenggunaController extends Controller
         $token = $provider->getAccessToken();
         $provider->setAccessToken($token);
 
-        // $response = $provider->createOrder([
-        //     "intent" => "CAPTURE",
-        //     "application_context" => [
-        //         "return_url"   => route('pengguna.langganan.success'),
-        //         "cancel_url"   => route('dashboard'),
-        //         "langganan_id" => $request->langganan,
-        //     ],
-        //     "purchase_units" => [
-        //         0 => [
-        //             "amount" => [
-        //                 "currency_code" => "USD",
-        //                 "value" => "100.00"
-        //             ]
-        //         ]
-        //     ]
-        // ]);
-
-        $langganan = Langganan::find($request->langganan);
-
         $response = $provider->createOrder([
-            "intent"         => "CAPTURE",
+            "intent" => "CAPTURE",
             "application_context" => [
-                "return_url"   => route('pengguna.langganan.success'),
-                "cancel_url"   => route('dashboard'),
-                "langganan_id" => $request->langganan,
+                "return_url" => route('pengguna.langganan.capture', ['langganan_id' => $request->langganan_id]),
+                "cancel_url" => route('dashboard'),
             ],
             "purchase_units" => [
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value"         => $langganan->harga,
+                        "value" => "100.00"
                     ]
                 ]
-            ],
+            ]
         ]);
 
         if (isset($response['id']) && $response['id'] != null) {
@@ -191,24 +202,19 @@ class PenggunaController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function langganan_success(Request $request)
+    public function langganan_capture(Request $request)
     {
-        $data = json_decode($request->getContent(), true);
+        // dd($request->langganan_id);
 
-        $token = $this->provider->getAccessToken();
-        $this->provider->setAccessToken($token);
         $response = $this->provider->capturePaymentOrder($request['token']);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            // try {
-            //     DB::beginTransaction();
-            //     if ($response['status'] == 'COMPLETED') {
-            //         DB::commit();
-            //     }
-            // } catch (Exception $e) {
-            //     DB::rollBack();
-            //     dd($e);
-            // }
+            $d = Langganan::where('id', $request->langganan_id)->first();
+
+            $user = User::find(Auth::user()->id);
+            $user->LanggananType = $d->id;
+            $user->LanggananExpire = \Carbon\Carbon::now()->addDays(30);
+            $user->save();
 
             return redirect()
                 ->route('pengguna.langganan')

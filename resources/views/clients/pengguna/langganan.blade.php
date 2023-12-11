@@ -1,33 +1,58 @@
 @extends('layouts.dashboard')
 
+@push('js')
+<script
+    src="https://www.paypal.com/sdk/js?client-id=Af-vtJZYBT7qM7loVdbLsDNSvAtQmnkSr0FcgzXAkBAMbkMPNnxvBhHP-2yUrWAhE6rBGTCEG3eHOir2&currency=USD&components=buttons&enable-funding=paylater&disable-funding=venmo,card">
+</script>
+<script>
+    function purchase(id) {
+        //
+    }
+</script>
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="card" style="margin-top: 25px;">
+        <div class="col-md-12" style="margin-top: 25px;">
+            @include('layouts.alert')
+
+            @if (Auth::user()->LanggananExpire->isPast())
+            <div class="row">
+
+                @foreach ($datas as $data)
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card" style="margin: 10px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $data->name }}</h5>
+                            <p class="card-text">
+                                With supporting text below as a natural lead-in to additional content.
+                            </p>
+                            <a href="{{ route('pengguna.langganan.show', $data->id) }}" class="btn btn-primary">
+                                <i class="icon-cart-add mr-2"></i> USD {{ number_format($data->harga,2,',','.') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            @else
+            <div class="card">
                 <div class="card-body">
-                    @include('layouts.alert')
-                    <form method="POST" action="{{ route('pengguna.langganan.post') }}">
-                        @csrf
-                        <div class="mb-3" id="langganan">
-                            <label for="langganan">Langganan</label>
-                            <select class="form-control" name="langganan" id="langganan">
-                                @foreach ($datas as $data)
-                                <option value="{{ $data->id }}">{{ $data->name }} - USD {{
-                                    number_format($data->harga,2,',','.') }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="mb-3" id="langganan">
+                        <label for="langganan">Langganan</label>
+                        <input name="langganan" type="text" class="form-control" value="{{ $datas->name }}" readonly>
+                    </div>
 
-                        <div class="d-flex justify-content-center align-items-center">
-                            <button type="submit" class="border border-info btn btn-md btn-success w-25" id="btn">
-                                Bayar
-                            </button>
-                        </div>
-                    </form>
-
+                    <div class="mb-3" id="expired">
+                        <label for="expired">Expired</label>
+                        <input name="expired" type="datetime" class="form-control" value="{{ Auth::user()->LanggananExpire }}" readonly>
+                    </div>
                 </div>
             </div>
+            @endif
+
         </div>
     </div>
 </div>
