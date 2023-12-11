@@ -218,7 +218,7 @@ class PenggunaController extends Controller
 
             return redirect()
                 ->route('pengguna.langganan')
-                ->with('success', 'Transaction complete.');
+                ->with('success', 'Transaksi Berhasil, Selamat Anda Telah Berlangganan');
         } else {
             return redirect()
                 ->route('pengguna.langganan')

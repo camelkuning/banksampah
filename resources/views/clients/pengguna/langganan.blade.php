@@ -26,7 +26,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $data->name }}</h5>
                             <p class="card-text">
-                                With supporting text below as a natural lead-in to additional content.
+                                Dengan berlangganan Anda dapat membuang sampah sepuasnya...
                             </p>
                             <a href="{{ route('pengguna.langganan.show', $data->id) }}" class="btn btn-primary">
                                 <i class="icon-cart-add mr-2"></i> USD {{ number_format($data->harga,2,',','.') }}

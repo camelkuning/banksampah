@@ -18,14 +18,14 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            <div class="mb-3" id="email">
+                            <div class="mb-3 " id="email">
                                 <label for="email">Email</label>
-                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" required>
+                                <input name="email" type="email" class="border-dark form-control @error('email') is-invalid @enderror" placeholder="Masukan Email" required>
                             </div>
 
                             <div class="mb-3" id="password">
                                 <label for="Password">Password</label>
-                                <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" required>
+                                <input name="password" type="password" class="border-dark form-control @error('password') is-invalid @enderror" placeholder="********" required>
                             </div>
 
 
