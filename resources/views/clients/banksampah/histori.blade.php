@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Petugas</th>
                                 <th scope="col">Berat Sampah</th>
                                 <th scope="col">Jenis Sampah</th>
                                 <th scope="col">Lokasi Pembuangan</th>
@@ -30,6 +31,7 @@
                             @foreach ($datas as $data)
                             <tr href="/httsdgsdg">
                                 <td> {{ $data->transaksi->id }} </td>
+                                <td> {{ $data->petugas->petugas_nama }} </td>
                                 <td> {{ $data->transaksi->berat_sampah }} </td>
                                 <td> {{ $data->transaksi->jenis_sampah }} </td>
                                 <td> {{ $data->transaksi->lokasi_pembuangan }} </td>

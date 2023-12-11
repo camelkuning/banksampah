@@ -1,39 +1,31 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="content p-4 w-75">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card bg-primary text-light">
-                    <div class="card-header">
-                        Hallo
-                    </div>
-                    <div class="card-body">
-                        ini petugas ya
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card bg-primary text-light">
-                    <div class="card-header">
-                        Hallo
-                    </div>
-                    <div class="card-body">
-                        :v
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card bg-primary text-light">
-                    <div class="card-header">
-                        Hallo
-                    </div>
-                    <div class="card-body">
-                        Halloooaoaoa
-                    </div>
-                </div>
-            </div>
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="card-title" style="margin-bottom: 50px;">Transaksi Sampah</h5>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nama Petugas</th>
+                            </tr>
+                        </thead>
 
+                        <tbody>
+                            @foreach ($datas as $data)
+                            <tr href="/httsdgsdg">
+                                <td> {{ $data->petugas_nama }} </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
 @endsection

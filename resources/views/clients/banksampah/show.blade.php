@@ -79,14 +79,31 @@
         </div>
 
         <div class="col-md-4">
-            <form method="POST" action="{{ route('banksampah.penerimaan.add') }}" autocomplete="on">
-                @csrf
-                <input name="id" type="text" class="form-control" value="{{ $data->id }}" hidden>
-                <p class="d-inline-flex gap-1">
-                    <button type="submit" class="btn btn-lg btn-success text-uppercase"
-                    id="btn">Ambil</button>
-                </p>
-            </form>
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('banksampah.penerimaan.add') }}" autocomplete="on">
+                            @csrf
+                            <input name="id" type="text" class="form-control" value="{{ $data->id }}" hidden>
+
+                            <div class="mb-3" id="Petugas">
+                                <label for="Petugas">Petugas</label>
+                                <select class="form-select" name="petugas" id="petugas">
+                                    @foreach ($dataPetugas as $petugas)
+                                    <option value="{{ $petugas->petugas_id }}">{{ $petugas->petugas_nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <p class="d-inline-flex gap-1">
+                                <button type="submit" class="btn btn-lg btn-success text-uppercase" id="btn">
+                                    Ambil
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

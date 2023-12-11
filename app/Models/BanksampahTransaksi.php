@@ -22,6 +22,7 @@ class BanksampahTransaksi extends Model
      * @var array
      */
     protected $fillable = [
+        'petugas_id',
         'transaksi_id',
         'UserID',
     ];
@@ -40,5 +41,13 @@ class BanksampahTransaksi extends Model
     public function transaksi()
     {
         return $this->hasOne(PenggunaBankSampah::class, 'id', 'transaksi_id');
+    }
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function petugas()
+    {
+        return $this->hasOne(Petugas::class, 'petugas_id', 'petugas_id');
     }
 }

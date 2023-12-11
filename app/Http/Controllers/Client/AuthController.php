@@ -81,20 +81,28 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
+        // $validator = Validator::make($request->all(), [
         $validator = $request->validate([
-            'username' => ['required', 'string'],
-            'password' => ['required', 'string'],
+            'email'    => ['required'],
+            'password' => ['required'],
         ]);
 
-        if (!Auth::attempt($validator)) {
-            return back()->withErrors([
-                'message' => 'Username dan Password Yang Dimasukan Salah',
-            ])->onlyInput('username');
+        if (Auth::attempt([
+            'email'    => $request->email,
+            'password' => $request->password
+        ])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
         }
 
-        return redirect(RouteServiceProvider::HOME)->with([
-            'success' => 'Anda berhasil masuk',
-        ]);
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+
+        // return redirect(RouteServiceProvider::HOME)->with([
+        //     'success' => 'Anda berhasil masuk',
+        // ]);
     }
 
     /**
