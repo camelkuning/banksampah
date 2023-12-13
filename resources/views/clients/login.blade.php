@@ -42,29 +42,6 @@
                                 <p class="sign-up mt-3">Belum Punya Akun? <a href="{{ route('register') }}">Sign Up</a></p>
                             </form>
                         </div>
-                        @endif
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="mb-3 " id="email">
-                                <label for="email">Email</label>
-                                <input name="email" type="email" class="border-dark form-control @error('email') is-invalid @enderror" placeholder="Masukan Email" required>
-                            </div>
-
-                            <div class="mb-3" id="password">
-                                <label for="Password">Password</label>
-                                <input name="password" type="password" class="border-dark form-control @error('password') is-invalid @enderror" placeholder="********" required>
-                            </div>
-
-
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button type="submit" class="border border-info btn btn-md btn-success w-25"
-                                    id="btn">Sign
-                                    In</button>
-                            </div>
-
-                            <p class="sign-up mt-3">Belum Punya Akun? <a href="{{ route('register') }}">Sign Up</a></p>
-                        </form>
                     </div>
                 </div>
             </div>
