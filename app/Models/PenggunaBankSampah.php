@@ -44,4 +44,12 @@ class PenggunaBankSampah extends Model
     {
         return $this->hasOne(User::class, 'id', 'UserID');
     }
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function lokasi()
+    {
+        return $this->hasOne(BankSampah::class, 'id', 'lokasi_pembuangan');
+    }
 }

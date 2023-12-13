@@ -34,9 +34,9 @@
                             <div class="mb-3" id="lokasi">
                                 <label for="lokasi">Lokasi Pembuangan</label>
                                 <select class="form-control" name="lokasi" id="lokasi">
-                                    <option selected="selected" value="Lokasi1">Lokasi Sampah 1</option>
-                                    <option value="Lokasi2">Lokasi Sampah 2</option>
-                                    <option value="Lokasi3">Lokasi Sampah 3</option>
+                                    @foreach ($lokasi as $l)
+                                    <option value="{{ $l->id }}">{{ $l->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

@@ -47,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function langganan()
+    {
+        return $this->hasOne(Langganan::class, 'id', 'LanggananType');
+    }
 }

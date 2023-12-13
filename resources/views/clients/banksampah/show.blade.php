@@ -87,8 +87,8 @@
                             <input name="id" type="text" class="form-control" value="{{ $data->id }}" hidden>
 
                             <div class="mb-3" id="Petugas">
-                                <label for="Petugas">Petugas</label>
-                                <select class="form-select" name="petugas" id="petugas">
+                                <label for="Petugas">Pilih Petugas</label>
+                                <select class="form-control" name="petugas" id="petugas">
                                     @foreach ($dataPetugas as $petugas)
                                     <option value="{{ $petugas->petugas_id }}">{{ $petugas->petugas_nama }}</option>
                                     @endforeach
@@ -96,7 +96,7 @@
                             </div>
 
                             <p class="d-inline-flex gap-1">
-                                <button type="submit" class="btn btn-lg btn-success text-uppercase" id="btn">
+                                <button type="submit" class="btn btn-md btn-info text-uppercase" id="btn">
                                     Ambil
                                 </button>
                             </p>

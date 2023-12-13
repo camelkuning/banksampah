@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\BankSampah;
 use App\Models\Langganan;
 use App\Models\PenggunaBankSampah;
 use App\Models\User;
@@ -33,8 +34,11 @@ class PenggunaController extends Controller
      */
     public function buangsampah()
     {
+        $lokasi = BankSampah::all();
+
         return view('clients.pengguna.buangsampah', [
             config(['app.title' => "Buang Sampah"]),
+            'lokasi' => $lokasi,
         ]);
     }
 
@@ -86,9 +90,11 @@ class PenggunaController extends Controller
      */
     public function transaksi()
     {
+        $data = PenggunaBankSampah::where('UserID', Auth::user()->id)->paginate(15);
+
         return view('clients.pengguna.transaksi', [
             config(['app.title' => "Transaksi"]),
-            'datas' => PenggunaBankSampah::where('UserID', Auth::user()->id)->paginate(15),
+            'datas' => $data,
         ]);
     }
 
@@ -116,11 +122,18 @@ class PenggunaController extends Controller
      */
     public function langganan(Request $request)
     {
-        if (Auth::user()->LanggananExpire->isPast()) {
-            $data = Langganan::all();
-        } else {
-            $data = Langganan::where('id', Auth::user()->LanggananType)->first();
-        }
+        $data = Langganan::all();
+
+        // if (Auth::user()->LanggananExpire->isPast() || Auth::user()->LanggananType > 0) {
+        //     $data = Langganan::all();
+        // } else {
+        //     $data = Langganan::where('id', Auth::user()->LanggananType)->first();
+        // }
+
+        // $data = Langganan::where('id', Auth::user()->LanggananType)->first();
+
+
+        // dd($data);
 
         return view('clients.pengguna.langganan', [
             config(['app.title' => "Langganan"]),
@@ -218,7 +231,7 @@ class PenggunaController extends Controller
 
             return redirect()
                 ->route('pengguna.langganan')
-                ->with('success', 'Transaction complete.');
+                ->with('success', 'Transaksi Berhasil, Selamat Anda Telah Berlangganan');
         } else {
             return redirect()
                 ->route('pengguna.langganan')
