@@ -39,13 +39,17 @@
                 @else
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $data->name }}</h5>
-                            <p class="card-text">
-                                Dengan berlangganan Anda dapat membuang sampah sepuasnya...
-                            </p>
-                            <a href="{{ route('pengguna.langganan.show', $data->id) }}" class="btn btn-primary">
-                                <i class="icon-cart-add mr-2"></i> USD {{ number_format($data->harga,2,',','.') }}
-                            </a>
+                            <div class="mb-3" id="langganan">
+                                <label for="langganan">Langganan</label>
+                                <input name="langganan" type="text" class="form-control" value="{{ Auth::user()->langganan->name }}"
+                                    readonly>
+                            </div>
+
+                            <div class="mb-3" id="expired">
+                                <label for="expired">Expired</label>
+                                <input name="expired" type="datetime" class="form-control"
+                                    value="{{ Auth::user()->LanggananExpire }}" readonly>
+                            </div>
                         </div>
                     </div>
                 @endif
