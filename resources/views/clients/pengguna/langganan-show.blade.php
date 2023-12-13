@@ -21,7 +21,7 @@
                                     <div class="mb-3" id="harga">
                                         <label for="harga">Harga</label>
                                         <input name="harga" type="text" class="form-control"
-                                            value="Rp {{ number_format($data->harga, 2, ',', '.') }}" readonly>
+                                            value="USD {{ number_format($data->harga, 2, ',', '.') }}" readonly>
                                     </div>
 
                                     <div class="mb-3" id="hari">
